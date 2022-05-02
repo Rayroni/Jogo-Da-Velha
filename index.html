@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/aaaaea5236.js" crossorigin="anonymous"></script>
+    <title>Jogo da Velha</title>
+</head>
+<body>
+    <div class="bemVindo"> 
+        <h1>BEM VINDO AO JOGO </h1>    
+    </div>
+    <div class="regras">
+        <h3>Regras do Jogo da Velha<h3>
+        <h4>O objetivo do jogo é fazer uma sequência de três símbolos iguais, 
+        </h4>
+        <h4>seja em linha vertical, horizontal ou diagonal.</h4>
+       
+    </div>
+    <div class="board x"data-board>   <!-- Board 9 classes ,classes para fazer a seleção no css ,classes para css e atributo para js-->
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+
+
+    <div class="winning-message" data-winning-message>
+        <p class="winning-message-text"data-winning-message-text>winning-message-textX venceu!</p> <!--mensagem de vitoria  -->
+        <button class="winning-message-button"data-restart-button>Reiniciar!</button>  <!-- botão reiniciar  -->
+    </div>
+  <script src="./scripts.js"></script> 
+</body>
+</html>

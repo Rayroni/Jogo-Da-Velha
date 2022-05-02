@@ -1,0 +1,153 @@
+/*formatação da pagina*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*Formatando do tamanho,body e colocando o background */
+body {
+    height: 80vh;
+    width: 100vw;
+   background: linear-gradient(
+    90deg,
+   rgb(247, 99, 41) 0%,
+   rgba(0 , 212, 255, 1) 100%);
+   
+}
+/*Controle do corpo da celula /tamanho altura e centralização da mesma*/
+.board {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center; /*centralizar todo conteudo no centro*/
+    align-content: center; /*centralizar todo conteduo na vertical*/
+    justify-items: center;/*centraliza o conteudo das celulas no centro*/
+    align-items: center;/*centraliza o conteudo das celulas no centro */
+    grid-template-columns: repeat(3, auto); /*ele ocupa a largura q o conteudo precisar */
+}
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    background: rgba(255, 255, 255, 0.3)!important;
+}
+.cell{
+    /*estilizando as celulas ,alinhando tudo,ou seja as divs que estão ali dentro*/
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}/*celulas selecionadas não são permitidas cliques*/
+.cell.x ,
+ .cell.circle{
+     cursor: not-allowed;
+ }
+
+/*ajustando cada filho do bord ,usando comando para modificar cada um individualmente , então tirando as bordas a partidar de cada filho*/
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom:none ;
+}
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: none;
+}
+/* x */
+.cell.x::before,/*uma perna do x*/
+.cell.x::after, /*outra perna do x*/
+.board.x .cell:not(.x):not(.circle):hover::after,/*aplicando hover apenas nas celulas vazias ou seja onde não haja x ou circle */
+.board.x .cell:not(.x):not(.circle):hover::before{
+content: ""; /*contente vazio*/
+height: calc(100px * 0.15); /*calculando em porcentagem o tamanho do traço do x ,15 % o tamanho da celula*/
+width: calc(100px * 0.9);  /*calculando em porcentagem o tamanho do traço do x* 90% o tamanho da celula/
+background: white; /*cor do x*/
+position: absolute; /*posição absoluta para formar o x  e os traços se cruzatem e não fiquem de forma estatica e a celula com position relative*/
+background-color: white;
+}
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg);
+}
+/*Circle */
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    content:"";
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+}
+/*menssagem de vitoria*/
+/*quando vc quiser q uma div fuja do fluxo da pagina ,fique em cima do fluxo da pagina use as config do top.left.right,bottom*/
+.winning-message{
+    display: none;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0 ;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8);
+    flex-direction: column;
+}
+.winning-message-button{
+    font-size: 2.5rem;
+    background-color:rgba(65,185,131,1);
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: white;
+}
+.winning-message-button:hover{
+    color: rgba(65,185,131,1) 0%,;
+    background-color: rgba(255, 255, 255, 0.466);
+}
+.winning-message-text{
+    color: white;
+    font-size: 5rem;
+}
+.show-winning-message {
+    display: flex;
+}
+.bemVindo{
+text-align: center;
+font-family: 'Tapestry', cursive;
+color: white;
+text-shadow: 2px 2px #e6412b;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Tapestry&display=swap" rel="stylesheet');
+
+.regras{
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    text-shadow: 2px 2px #e6412b;
+    text-align: left;
+                
+}
